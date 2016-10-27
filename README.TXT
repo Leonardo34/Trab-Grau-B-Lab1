@@ -1,12 +1,12 @@
-----------------------------------------------------------------------------
-Este é o arquivo README do projeto. Você deve descrever aqui o seu projeto.
-Informe ao usuário (alguém que não sabe nada sobre este projeto!) tudo que
-ele/ela precisa saber. Os comentários devem incluir, pelo menos:
+﻿----------------------------------------------------------------------------
+Trabalho Prático da cadeira de Laboratório-I, do curso de Ciência da Computação
+da Universidade do Vale dos Sinos (UNISINOS), 2016/2.
+
+
 ------------------------------------------------------------------------
 
-TITULO DO PROJETO:
+TITULO DO PROJETO: Simulação (simplificada) do sistema de poupança de um Banco que oferece contas de poupança normais e um tipo especial de poupança que funciona como um plano de saúde
 OBJETIVO DO PROJETO:
-VERSÃO ou DATA:
-COMO INICIAR O PROJETO:
-AUTORES:
+VERSÃO ou DATA: v1.0 (27/10/2016)
+AUTORES: Leonardo Broch de Morais (leo_broch@hotmail.com) e Lucas Heim
 INSTRUÇÕES PARA O USUÁRIO:
