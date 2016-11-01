@@ -1,4 +1,6 @@
 #BlueJ class context
 comment0.params=maxContas
 comment0.target=Agencia(int)
-numComments=1
+comment1.params=
+comment1.target=int\ abreConta()
+numComments=2
