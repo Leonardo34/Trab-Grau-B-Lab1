@@ -135,6 +135,15 @@ public class Agencia
             }
             else if (opcao == 6) {
                 //Emite extrato
+                
+                int index = buscaConta(t.leInt("Digite o numero da conta que voce quer visualizar o extrato: "));
+                
+                if (index < 0) {
+                    System.out.println("Conta inexistente");
+                }
+                else {
+                    System.out.println(contas[index]);
+                }
             }
             else if (opcao == 7) {
                 //Credita Rendimentos
