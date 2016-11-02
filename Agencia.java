@@ -147,6 +147,15 @@ public class Agencia
             }
             else if (opcao == 7) {
                 //Credita Rendimentos
+                
+                double taxa = t.leDouble("Digite a taxa de rendimento");
+                double rendimentoTotal = 0;
+                
+                for (int i = 0; i < contas.length; i++) {
+                    rendimentoTotal += contas[i].creditaRendimento(taxa);
+                }
+                
+                System.out.println("Total creditado em todas as contas: R$: " + rendimentoTotal);
             }
             else if (opcao == 8) {
                 //Insere um dependente
