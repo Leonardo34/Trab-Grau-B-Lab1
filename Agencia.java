@@ -103,9 +103,29 @@ public class Agencia
             }
             else if (opcao == 2) {
                 //Faz deposito
+                int index = buscaConta(t.leInt("Digite o numero da conta que voce quer realizar o deposito"));
+                
+                if (index < 0) {
+                    System.out.println("Conta inexistente");
+                }
+                else {
+                    contas[index].deposita(t.leDouble("Digite o valor a ser depositado: "));
+                }
             }
             else if (opcao == 3) {
                 //Retira
+                int index = buscaConta(t.leInt("Digite o numero da conta que voce quer realizar o saque"));
+                
+                if (index < 0) {
+                    System.out.println("Conta inexistente");
+                }
+                else {
+                    boolean sucess = contas[index].retira(t.leDouble("Digite o valor a ser retirado: "));
+                    
+                    if (!sucess) {
+                        System.out.println("Saldo insuficiente");
+                    }
+                }
             }
             else if (opcao == 4) {
                 //Retira para a saude
