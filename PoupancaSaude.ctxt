@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=numConta\ nome
+comment0.target=PoupancaSaude(int,\ java.lang.String)
+comment1.params=
+comment1.target=int\ contaDependentes()
+comment2.params=valor
+comment2.target=void\ deposita(double)
+comment3.params=taxa
+comment3.target=double\ creditaRendimento(double)
+comment4.params=a
+comment4.target=boolean\ insereDependente(Dependente)
+comment5.params=nome
+comment5.target=int\ buscaDependente(java.lang.String)
+comment6.params=nome
+comment6.target=Dependente\ retiraDependente(java.lang.String)
+comment7.params=valor
+comment7.target=double\ retiraSaude(double)
+numComments=8

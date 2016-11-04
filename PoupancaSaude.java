@@ -33,10 +33,16 @@ public class PoupancaSaude extends Poupanca
             case 0:
             desconto = 0.15 * valor;
             break;
-            case 1 || 2:
+            case 1:
             desconto = 0.2 * valor;
             break;
-            case 3 || 4:
+            case 2:
+            desconto = 0.2 * valor;
+            break;
+            case 3:
+            desconto = 0.3 * valor;
+            break;
+            case 4:
             desconto = 0.3 * valor;
             break;
             case 5:
@@ -61,21 +67,22 @@ public class PoupancaSaude extends Poupanca
 
     public boolean insereDependente(Dependente a)
     {
-        for(x=0;x<dependentes.length;x++)
+        for(int x=0;x<dependentes.length;x++)
         {
             if(dependentes[x] == null) {dependentes[x] = a; return true;}
-            return false;
-
         }
+        return false;
     }
 
     public int buscaDependente(String nome)
     {
-        for(x=0;x<dependentes.length;x++)
-        {
-            if(dependentes[x].getCliente() == nome) return x;
-            return 99;
-        }
+        // TODO: Utilizar equals
+        //for(int x=0;x<dependentes.length;x++)
+        //{
+        //    if(dependentes[x].getCliente() == nome) return x;
+        //    return 99;
+        //}
+        return 0;
     }
 
     public Dependente retiraDependente(String nome)
@@ -104,7 +111,7 @@ public class PoupancaSaude extends Poupanca
             divida = valor - saldoVinculado;
             saldoVinculado = 0;
             double a = 0;
-            System.out.println("O seu saldo vinculado não foi o suficiente para abater a despesa.")
+            System.out.println("O seu saldo vinculado não foi o suficiente para abater a despesa.");
             System.out.println("Restam: R$" + divida);
             System.out.println("");
             System.out.println("O seu saldo livre possui R$" + super.getSaldoLivre());
@@ -115,8 +122,10 @@ public class PoupancaSaude extends Poupanca
             
             }while(a>getSaldoLivre() || a>divida);
 
-            if(divida - a > 0)
+            if(divida - a > 0) {}
 
         }
+        // DEBUG
+        return 0;
     }
 }
