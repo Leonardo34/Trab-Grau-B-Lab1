@@ -1,4 +1,3 @@
-
 /** Alunos : Leonardo Broch de Morais (leo_broch@hotmail.com) e Lucas Heim        Trabalho B    Lab 1    Prof. Aníbal   2016/2 */ 
 
 public class Dependente
@@ -39,4 +38,10 @@ public class Dependente
     public String toString () {
         return "Nome: " + this.nome + " Parentesco: " + this.traduzParentesco();
     }
+
+    public String getNome()
+    {
+        return nome;
+    }
 }
+
