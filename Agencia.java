@@ -129,9 +129,44 @@ public class Agencia
             }
             else if (opcao == 4) {
                 //Retira para a saude
+                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer realizar o saque"));
+
+                if(index<0) 
+                {
+                    System.out.println("Conta Inexistente");
+                }
+
+                else if(!(contas[index] instanceof PoupancaSaude))
+                {
+                    System.out.println("Não é uma conta saude");
+                }
+
+                else
+                {
+                    boolean sucess = ((PoupancaSaude)contas[index]).retira(t.leDouble("Digite o valor a ser retirado: "));
+                }
             }
             else if (opcao ==5) {
                 //Amortiza para Financiamento
+                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer realizar o saque"));
+
+                if(index<0) 
+                {
+                    System.out.println("Conta Inexistente");
+                }
+
+                else if(!(contas[index] instanceof PoupancaSaude))
+                {
+                    System.out.println("Tipo de conta não aceita essa operação.");
+                }
+
+                else
+                {
+                    double sucess = ((PoupancaSaude)contas[index]).amortizaFinanciamento(t.leDouble("Digite o valor a ser pago: "));
+
+                    if(sucess>0) System.out.println("Recebeu desconto de: " + sucess);
+                }
+
             }
             else if (opcao == 6) {
                 //Emite extrato
@@ -159,6 +194,22 @@ public class Agencia
             }
             else if (opcao == 8) {
                 //Insere um dependente
+                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer realizar o saque"));
+
+                if(index<0) 
+                {
+                    System.out.println("Conta Inexistente");
+                }
+
+                else if(!(contas[index] instanceof PoupancaSaude))
+                {
+                    System.out.println("Não é uma conta saude");
+                }
+
+                else
+                {
+                    //TODO: Insere e retira dependente
+                }
             }
             else if (opcao == 9) {
                 //Retira um dependente

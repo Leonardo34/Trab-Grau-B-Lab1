@@ -76,12 +76,11 @@ public class PoupancaSaude extends Poupanca
 
     public int buscaDependente(String nome)
     {
-        // TODO: Utilizar equals
-        //for(int x=0;x<dependentes.length;x++)
-        //{
-        //    if(dependentes[x].getCliente() == nome) return x;
-        //    return 99;
-        //}
+        for(int x = 0;x<dependentes.length;x++)
+        {
+            if(dependentes[x].getNome().equals(nome)) return x;
+            return 99;
+        }
         return 0;
     }
 
@@ -122,10 +121,74 @@ public class PoupancaSaude extends Poupanca
             
             }while(a>getSaldoLivre() || a>divida);
 
-            if(divida - a > 0) {}
-
+            super.retira(divida);
+            if(divida - a > 0) 
+            {
+                if(saldoFinanciado==0) a = divida + 0.05*divida;
+                else if(saldoFinanciado>0 && saldoFinanciado<=500.00) a = divida + 0.1*divida;
+                else a = divida+ 0.15*divida;
+            
+                saldoFinanciado += a;
+                return a;
+            }
         }
         // DEBUG
         return 0;
+    }
+
+    public double amortizaFinanciamento(double valor)
+    {
+        if(valor > saldoFinanciado)
+        {
+            return 0;
+        }
+
+        else
+        {
+            saldoFinanciado -= valor;
+
+            if(saldoFinanciado == 0)
+            {
+                super.deposita(valor*0.05);
+                return valor*0.05;
+            }
+
+            return 0;
+        }
+    }
+
+    private void ordenaDependentes()
+    {
+        Dependente temp;
+
+        for(int x = 0;x<dependentes.length;x++)
+        {
+            for(int y = 0;y<dependentes.length;y++)
+            {
+                if(dependentes[y].getNome().compareTo(dependentes[y+1].getNome())>0 || dependentes[y] == null)
+                {
+                    temp = dependentes[y];
+                    dependentes[y] = dependentes[y+1];
+                    dependentes[y+1] = temp;
+                }
+            }
+        }
+    }
+
+    @Override
+    public String toString()
+    {
+        String dep = "\nLista de Dependentes: ";
+
+        for(int x = 0;x<dependentes.length;x++)
+        {
+            if(dependentes[x] != null)
+            {
+                dep += x+1 + " - " + dependentes[x].getNome() + "\n";
+            }
+        }
+
+
+        return super.toString() + dep;
     }
 }

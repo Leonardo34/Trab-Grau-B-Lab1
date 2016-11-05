@@ -39,4 +39,9 @@ public class Dependente
     public String toString () {
         return "Nome: " + this.nome + " Parentesco: " + this.traduzParentesco();
     }
+
+    public String getNome()
+    {
+        return nome;
+    }
 }
