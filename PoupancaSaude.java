@@ -12,6 +12,13 @@ public class PoupancaSaude extends Poupanca
         dependentes = new Dependente[5];
     }
 
+    /** 
+     * Método que retorna o número de dependentes já instanciados
+     * 
+     * @param void 
+     * @return quantidade de dependentes
+     */
+
     public int contaDependentes()
     {
         int contador = 0;
@@ -22,6 +29,13 @@ public class PoupancaSaude extends Poupanca
 
         return contador;
     }
+
+    /** 
+     * Método sobrescrito da classe Poupança. Realiza um depósito na Poupança Saúde.
+     * 
+     * @param valor a ser depositado(valor)
+     * @return void
+     */
 
     @Override
     public void deposita (double valor) {
@@ -57,6 +71,13 @@ public class PoupancaSaude extends Poupanca
         saldoVinculado += desconto;
     }
 
+    /** 
+     * Método sobrescrito da classe Poupança. Credita os rendimentos.
+     * 
+     * @param taxa de crédito a ser aplicada (taxa)
+     * @return soma de todos os rendimentos adicionados.
+     */
+
     @Override
     public double creditaRendimento (double taxa) {
         double rendimento = taxa * saldoVinculado;
@@ -64,6 +85,13 @@ public class PoupancaSaude extends Poupanca
         return rendimento + super.creditaRendimento(taxa);
 
     }
+    
+    /** 
+     * Método que insere um novo dependente na Poupanca Saude.
+     * 
+     * @param dependente a ser adicionado (a)
+     * @return true se inseriu com sucesso, false se o array está lotado.
+     */
 
     public boolean insereDependente(Dependente a)
     {
@@ -74,15 +102,29 @@ public class PoupancaSaude extends Poupanca
         return false;
     }
 
+    /** 
+     * Método que busca o índice de um certo dependente no array através do nome.
+     * 
+     * @param nome do dependente a ser buscado (nome)
+     * @return índice do array ou, caso não encontre, 99.
+     */
+
     public int buscaDependente(String nome)
     {
         for(int x = 0;x<dependentes.length;x++)
         {
             if(dependentes[x].getNome().equals(nome)) return x;
-            return 99;
         }
-        return 0;
+        return 99;
     }
+
+
+    /** 
+     * Método que retira um dependente do array, buscando pelo nome.
+     * 
+     * @param nome do dependente a ser retirado (nome)
+     * @return objeto que foi retirado ou, se não encontrou, null.
+     */
 
     public Dependente retiraDependente(String nome)
     {
@@ -95,6 +137,13 @@ public class PoupancaSaude extends Poupanca
         }
         return null;
     }
+
+    /** 
+     * Método que faz a retirada de um certo valor da Poupanca Saude.
+     * 
+     * @param valor a ser retirado (valor)
+     * @return valor que foi financiado.
+     */
 
     public double retiraSaude(double valor)
     {
@@ -121,12 +170,12 @@ public class PoupancaSaude extends Poupanca
             
             }while(a>getSaldoLivre() || a>divida);
 
-            super.retira(divida);
+            super.retira(a);
             if(divida - a > 0) 
             {
-                if(saldoFinanciado==0) a = divida + 0.05*divida;
-                else if(saldoFinanciado>0 && saldoFinanciado<=500.00) a = divida + 0.1*divida;
-                else a = divida+ 0.15*divida;
+                if(saldoFinanciado==0) a = (divida - a) + 0.05*(divida - a);
+                else if(saldoFinanciado>0 && saldoFinanciado<=500.00) a = (divida - a) + 0.1*(divida - a);
+                else a = (divida - a)+ 0.15*(divida - a);
             
                 saldoFinanciado += a;
                 return a;
@@ -135,6 +184,13 @@ public class PoupancaSaude extends Poupanca
         // DEBUG
         return 0;
     }
+
+    /** 
+     * Método para quitar a dívida do financiamento.
+     * 
+     * @param valor a ser pago (valor)
+     * @return desconto ganho.
+     */
 
     public double amortizaFinanciamento(double valor)
     {
@@ -157,28 +213,52 @@ public class PoupancaSaude extends Poupanca
         }
     }
 
+    /** 
+     * Método que ordena o array dos dependentes pelo nome.
+     * 
+     * @param void
+     * @return void
+     */
+
     private void ordenaDependentes()
     {
         Dependente temp;
 
         for(int x = 0;x<dependentes.length;x++)
         {
-            for(int y = 0;y<dependentes.length;y++)
+            for(int y = 0;y<dependentes.length-1;y++)
             {
-                if(dependentes[y].getNome().compareTo(dependentes[y+1].getNome())>0 || dependentes[y] == null)
+                if(dependentes[y] != null && dependentes[y+1] != null)
                 {
-                    temp = dependentes[y];
+                    if(dependentes[y].getNome().compareTo(dependentes[y+1].getNome())>0)
+                    {
+                        temp = dependentes[y];
+                        dependentes[y] = dependentes[y+1];
+                        dependentes[y+1] = temp;
+                    }
+                }
+                
+                else if(dependentes[y] == null && dependentes[y+1]!=null)
+                {
                     dependentes[y] = dependentes[y+1];
-                    dependentes[y+1] = temp;
+                    dependentes[y+1] = null;
                 }
             }
         }
     }
 
+    /** 
+     * Método que imprime as informações da conta na tela..
+     * 
+     * @param void
+     * @return void
+     */
+
     @Override
     public String toString()
     {
-        String dep = "\nLista de Dependentes: ";
+        String dep = "\nLista de Dependentes: \n";
+        ordenaDependentes();
 
         for(int x = 0;x<dependentes.length;x++)
         {

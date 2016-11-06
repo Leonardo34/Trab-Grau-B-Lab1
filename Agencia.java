@@ -42,8 +42,8 @@ public class Agencia
         } 
         else {
             // Instanciar poupança saude
-            // DEBUG
-            return -1;
+            contas[indexNovaConta] = new PoupancaSaude(t.leInt("Digite o numero da Conta: "), t.leString("Digite o nome do cliente: "));
+            return contas[indexNovaConta].getNumero();
         }       
     }
     
@@ -60,8 +60,11 @@ public class Agencia
     
     private int buscaConta (int numeroConta) {
         for (int i = 0; i < contas.length; i++) {
+            if(contas[i] != null)
+            {
             if (contas[i].getNumero() == numeroConta) {
                 return i;
+            }
             }
         }
         return -1;
@@ -129,7 +132,7 @@ public class Agencia
             }
             else if (opcao == 4) {
                 //Retira para a saude
-                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer realizar o saque"));
+                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer realizar o saque para saúde"));
 
                 if(index<0) 
                 {
@@ -143,12 +146,12 @@ public class Agencia
 
                 else
                 {
-                    boolean sucess = ((PoupancaSaude)contas[index]).retira(t.leDouble("Digite o valor a ser retirado: "));
+                    ((PoupancaSaude)contas[index]).retiraSaude(t.leDouble("Digite o valor a ser retirado: "));
                 }
             }
             else if (opcao ==5) {
                 //Amortiza para Financiamento
-                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer realizar o saque"));
+                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer amortizar para financiamento"));
 
                 if(index<0) 
                 {
@@ -164,7 +167,7 @@ public class Agencia
                 {
                     double sucess = ((PoupancaSaude)contas[index]).amortizaFinanciamento(t.leDouble("Digite o valor a ser pago: "));
 
-                    if(sucess>0) System.out.println("Recebeu desconto de: " + sucess);
+                    if(sucess>0) System.out.println("Recebeu desconto-depósito de: " + sucess);
                 }
 
             }
@@ -177,7 +180,8 @@ public class Agencia
                     System.out.println("Conta inexistente");
                 }
                 else {
-                    System.out.println(contas[index]);
+                    if(contas[index] instanceof Poupanca) System.out.println(contas[index]);
+                    else System.out.println((PoupancaSaude)contas[index]);
                 }
             }
             else if (opcao == 7) {
@@ -187,14 +191,17 @@ public class Agencia
                 double rendimentoTotal = 0;
                 
                 for (int i = 0; i < contas.length; i++) {
-                    rendimentoTotal += contas[i].creditaRendimento(taxa);
+                    if(contas[i] != null)
+                    {
+                        rendimentoTotal += contas[i].creditaRendimento(taxa);
+                    }
                 }
                 
                 System.out.println("Total creditado em todas as contas: R$: " + rendimentoTotal);
             }
             else if (opcao == 8) {
                 //Insere um dependente
-                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer realizar o saque"));
+                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer inserir um dependente"));
 
                 if(index<0) 
                 {
@@ -208,11 +215,29 @@ public class Agencia
 
                 else
                 {
-                    //TODO: Insere e retira dependente
+                    Dependente a = new Dependente(t.leString("Digite o nome do dependente"),t.leChar("Escolha o parentesco:\n c - Conjuge \n f - Filho \n p - Progenitor \n o - Outro"));
+                    boolean sucess = ((PoupancaSaude)contas[index]).insereDependente(a);
+                    if(!sucess) System.out.println("Esta conta não admite mais dependentes");
                 }
             }
             else if (opcao == 9) {
-                //Retira um dependente
+                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer retirar um dependente"));
+
+                if(index<0) 
+                {
+                    System.out.println("Conta Inexistente");
+                }
+
+                else if(!(contas[index] instanceof PoupancaSaude))
+                {
+                    System.out.println("Não é uma conta saude");
+                }
+
+                else
+                {
+                    Dependente sucess = ((PoupancaSaude)contas[index]).retiraDependente(t.leString("Digite o nome do dependente"));
+                    if(sucess == null) System.out.println("Não existe dependente com esse nome");
+                }
             }
         } while (opcao != 10);
     }
