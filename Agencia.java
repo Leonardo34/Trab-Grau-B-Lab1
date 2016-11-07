@@ -1,4 +1,4 @@
-/** Alunos : Leonardo Broch de Morais (leo_broch@hotmail.com) e Lucas Heim        Trabalho B    Lab 1    Prof. Aníbal   2016/2 */ 
+/** Alunos : Leonardo Broch de Morais (leo_broch@hotmail.com) e Lucas Heim (lucasheim1983@gmail.com) Trabalho B    Lab 1    Prof. Aníbal   2016/2 */ 
 
 public class Agencia
 {
@@ -13,7 +13,7 @@ public class Agencia
      * Método que abre uma Poupanca e a aloca no array(contas)
      * 
      * @param void 
-     * @return numero da conta instanciada ou codigo de erro (array lotado)
+     * @return número da conta instanciada ou codigo de erro (array lotado)
      */
     
     private int abreConta () {
@@ -36,33 +36,33 @@ public class Agencia
         
         if (opcao == 1) {
             // Instanciar poupança normal
-            contas[indexNovaConta] = new Poupanca (t.leInt("Digite o numero da Conta: "), t.leString("Digite o nome do cliente: "));
+            contas[indexNovaConta] = new Poupanca (t.leInt("Digite o número da conta: "), t.leString("Digite o nome do cliente: "));
             totalContas++;
             return contas[indexNovaConta].getNumero();
         } 
         else {
             // Instanciar poupança saude
-            contas[indexNovaConta] = new PoupancaSaude(t.leInt("Digite o numero da Conta: "), t.leString("Digite o nome do cliente: "));
+            contas[indexNovaConta] = new PoupancaSaude(t.leInt("Digite o número da conta: "), t.leString("Digite o nome do cliente: "));
             return contas[indexNovaConta].getNumero();
         }       
     }
     
     /** 
-     * Método que recebe o numero de uma conta a ser procurada
+     * Método que recebe o número de uma conta a ser procurada
      * e busca no array(contas) se existe alguma conta instanciada 
-     * com este numero, caso exista retorna seu indice, se não existe 
+     * com este número, caso exista retorna seu indice, se não existe 
      * retorna um codigo de erro
      * 
-     * @param Numero da conta a ser procurada (numeroConta) 
+     * @param número da conta a ser procurada (númeroConta) 
      * @return indice da conta procurada no array (contas), ou caso não exista
      * retorna um codigo de erro
      */
     
-    private int buscaConta (int numeroConta) {
+    private int buscaConta (int númeroConta) {
         for (int i = 0; i < contas.length; i++) {
             if(contas[i] != null)
             {
-            if (contas[i].getNumero() == numeroConta) {
+            if (contas[i].getNumero() == númeroConta) {
                 return i;
             }
             }
@@ -82,6 +82,7 @@ public class Agencia
         int opcao;
         
         do {
+            System.out.println("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
             System.out.println("1- Abre Conta");
             System.out.println("2- Deposita");
             System.out.println("3- Retira");
@@ -92,7 +93,9 @@ public class Agencia
             System.out.println("8- Insere um dependente");
             System.out.println("9- Retira um dependente");
             System.out.println("10- Encerra");
+            System.out.println("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
             opcao = t.leInt("Digite a opcao escolhida: ");
+            
             
             if (opcao == 1) {
                 //Abre uma nova conta na agencia
@@ -101,12 +104,12 @@ public class Agencia
                     System.out.println("Não pode abrir novas contas nessa Agencia");
                 }
                 else {
-                    System.out.println("Conta aberta de numero: " + protocolo);
+                    System.out.println("Conta aberta de número: " + protocolo);
                 }
             }
             else if (opcao == 2) {
                 //Faz deposito
-                int index = buscaConta(t.leInt("Digite o numero da conta que voce quer realizar o deposito"));
+                int index = buscaConta(t.leInt("Digite o número da conta que voce quer realizar o deposito"));
                 
                 if (index < 0) {
                     System.out.println("Conta inexistente");
@@ -117,7 +120,7 @@ public class Agencia
             }
             else if (opcao == 3) {
                 //Retira
-                int index = buscaConta(t.leInt("Digite o numero da conta que voce quer realizar o saque"));
+                int index = buscaConta(t.leInt("Digite o número da conta que voce quer realizar o saque"));
                 
                 if (index < 0) {
                     System.out.println("Conta inexistente");
@@ -132,7 +135,7 @@ public class Agencia
             }
             else if (opcao == 4) {
                 //Retira para a saude
-                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer realizar o saque para saúde"));
+                int index = buscaConta(t.leInt("Digite o  número da conta que você quer realizar o saque para saúde"));
 
                 if(index<0) 
                 {
@@ -151,7 +154,7 @@ public class Agencia
             }
             else if (opcao ==5) {
                 //Amortiza para Financiamento
-                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer amortizar para financiamento"));
+                int index = buscaConta(t.leInt("Digite o  número da conta que você quer amortizar para financiamento"));
 
                 if(index<0) 
                 {
@@ -174,7 +177,7 @@ public class Agencia
             else if (opcao == 6) {
                 //Emite extrato
                 
-                int index = buscaConta(t.leInt("Digite o numero da conta que voce quer visualizar o extrato: "));
+                int index = buscaConta(t.leInt("Digite o número da conta que voce quer visualizar o extrato: "));
                 
                 if (index < 0) {
                     System.out.println("Conta inexistente");
@@ -201,7 +204,7 @@ public class Agencia
             }
             else if (opcao == 8) {
                 //Insere um dependente
-                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer inserir um dependente"));
+                int index = buscaConta(t.leInt("Digite o  número da conta que você quer inserir um dependente"));
 
                 if(index<0) 
                 {
@@ -221,7 +224,7 @@ public class Agencia
                 }
             }
             else if (opcao == 9) {
-                int index = buscaConta(t.leInt("Digite o  numero da conta que você quer retirar um dependente"));
+                int index = buscaConta(t.leInt("Digite o  número da conta que você quer retirar um dependente"));
 
                 if(index<0) 
                 {

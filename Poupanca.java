@@ -1,5 +1,4 @@
-
-/** Alunos : Leonardo Broch de Morais (leo_broch@hotmail.com) e Lucas Heim        Trabalho B    Lab 1    Prof. Aníbal   2016/2 */ 
+/** Alunos : Leonardo Broch de Morais (leo_broch@hotmail.com) e Lucas Heim (lucasheim1983@gmail.com) Trabalho B    Lab 1    Prof. Aníbal   2016/2 */ 
 
 public class Poupanca
 {
