@@ -258,6 +258,7 @@ public class PoupancaSaude extends Poupanca
     @Override
     public String toString()
     {
+        String valores = "\nSaldo Vinculado: " + saldoVinculado + "\nSaldo Financiado: " + saldoFinanciado;
         String dep = "\nLista de Dependentes: \n";
         ordenaDependentes();
 
@@ -270,6 +271,6 @@ public class PoupancaSaude extends Poupanca
         }
 
 
-        return super.toString() + dep;
+        return super.toString() + valores + dep;
     }
 }

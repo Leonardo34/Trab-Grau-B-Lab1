@@ -183,9 +183,8 @@ public class Agencia
                 if (index < 0) {
                     System.out.println("Conta inexistente");
                 }
-                else {
-                    if(contas[index] instanceof Poupanca) System.out.println(contas[index]);
-                    else System.out.println((PoupancaSaude)contas[index]);
+                else { 
+                    System.out.println(contas[index]);
                 }
             }
             else if (opcao == 7) {
