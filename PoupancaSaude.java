@@ -223,24 +223,24 @@ public class PoupancaSaude extends Poupanca
     {
         Dependente temp;
 
-        for(int x = 0;x<dependentes.length;x++)
+        for(int x = 0;x<dependentes.length - 1;x++)
         {
-            for(int y = 0;y<dependentes.length-1;y++)
+            for(int y = x + 1;y<dependentes.length;y++)
             {
-                if(dependentes[y] != null && dependentes[y+1] != null)
+                if(dependentes[x] != null && dependentes[y] != null)
                 {
-                    if(dependentes[y].getNome().compareTo(dependentes[y+1].getNome())>0)
+                    if(dependentes[x].getNome().compareTo(dependentes[y].getNome())>0)
                     {
-                        temp = dependentes[y];
-                        dependentes[y] = dependentes[y+1];
-                        dependentes[y+1] = temp;
+                        temp = dependentes[x];
+                        dependentes[x] = dependentes[y];
+                        dependentes[y] = temp;
                     }
                 }
                 
-                else if(dependentes[y] == null && dependentes[y+1]!=null)
+                else if(dependentes[x] == null && dependentes[y]!=null)
                 {
-                    dependentes[y] = dependentes[y+1];
-                    dependentes[y+1] = null;
+                    dependentes[x] = dependentes[y];
+                    dependentes[y] = null;
                 }
             }
         }
