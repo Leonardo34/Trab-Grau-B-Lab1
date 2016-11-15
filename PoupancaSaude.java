@@ -112,7 +112,9 @@ public class PoupancaSaude extends Poupanca
     {
         for(int x = 0;x<dependentes.length;x++)
         {
-            if(dependentes[x].getNome().equals(nome)) return x;
+            if(dependentes[x] != null) {
+                if(dependentes[x].getNome().equals(nome)) return x;
+            }    
         }
         return 99;
     }
