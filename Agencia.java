@@ -43,6 +43,7 @@ public class Agencia
         else {
             // Instanciar poupança saude
             contas[indexNovaConta] = new PoupancaSaude(t.leInt("Digite o número da conta: "), t.leString("Digite o nome do cliente: "));
+            totalContas++;
             return contas[indexNovaConta].getNumero();
         }       
     }
