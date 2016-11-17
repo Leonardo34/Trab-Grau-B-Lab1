@@ -44,6 +44,13 @@ public class Agencia
             // Instanciar poupança saude
             contas[indexNovaConta] = new PoupancaSaude(t.leInt("Digite o número da conta: "), t.leString("Digite o nome do cliente: "));
             totalContas++;
+            char opcaoDependente;
+            do {
+                opcaoDependente = t.leChar("Deseja inserir um dependente (s/n) ?: ");
+                if (opcaoDependente == 's') {
+                    ((PoupancaSaude)(contas[indexNovaConta])).insereDependente(new Dependente(t.leString("Digite o nome do dependente"),t.leChar("Escolha o parentesco:\n c - Conjuge \n f - Filho \n p - Progenitor \n o - Outro")));
+                }
+            } while (opcaoDependente == 's' && ((PoupancaSaude)(contas[indexNovaConta])).contaDependentes() < 5);
             return contas[indexNovaConta].getNumero();
         }       
     }
