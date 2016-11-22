@@ -183,7 +183,7 @@ public class PoupancaSaude extends Poupanca
                 return a;
             }
         }
-        // DEBUG
+        
         return 0;
     }
 
@@ -253,7 +253,7 @@ public class PoupancaSaude extends Poupanca
      * Método que imprime as informações da conta na tela..
      * 
      * @param void
-     * @return void
+     * @return String
      */
 
     @Override
