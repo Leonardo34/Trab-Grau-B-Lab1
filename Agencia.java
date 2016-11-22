@@ -66,13 +66,12 @@ public class Agencia
      * retorna um codigo de erro
      */
     
-    private int buscaConta (int númeroConta) {
+    private int buscaConta (int numeroConta) {
         for (int i = 0; i < contas.length; i++) {
-            if(contas[i] != null)
-            {
-            if (contas[i].getNumero() == númeroConta) {
-                return i;
-            }
+            if(contas[i] != null){
+                if (contas[i].getNumero() == numeroConta) {
+                    return i;
+                }
             }
         }
         return -1;
@@ -157,7 +156,8 @@ public class Agencia
 
                 else
                 {
-                    ((PoupancaSaude)contas[index]).retiraSaude(t.leDouble("Digite o valor a ser retirado: "));
+                    double valorFinanciado = ((PoupancaSaude)contas[index]).retiraSaude(t.leDouble("Digite o valor a ser retirado: "));
+                    System.out.println("Valor Financiado: R$ " + valorFinanciado);
                 }
             }
             else if (opcao ==5) {

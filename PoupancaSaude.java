@@ -21,7 +21,7 @@ public class PoupancaSaude extends Poupanca
     public int contaDependentes()
     {
         int contador = 0;
-        for(int x = 0;x<5;x++)
+        for(int x = 0;x<dependentes.length;x++)
         {
             if(dependentes[x] != null) contador++;
         }
@@ -153,6 +153,7 @@ public class PoupancaSaude extends Poupanca
         if(valor <= saldoVinculado)
         {
             saldoVinculado -= valor;
+            return 0;
         }        
 
         else
